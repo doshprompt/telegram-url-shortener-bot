@@ -36,15 +36,15 @@ bot.onText(/^\/expand (.+)$/, (msg, match) => {
 
     unshort(shortUrl, (err, url) => {
         if (err) {
-            console.log(symbols.error, err);
             bot.sendMessage(msg.from.id, 'Sorry, that URL could not be expanded :(');
+            console.log(symbols.error, err);
         } else {
             if (url) {
                 bot.sendMessage(msg.from.id, url);
                 console.log(symbols.success, shortUrl, '-->', url);
             } else {
-                console.log(symbols.error, shortUrl);
                 bot.sendMessage(msg.from.id, 'Sorry, that URL could not be expanded :(');
+                console.log(symbols.error, shortUrl);
             }
         }
     });

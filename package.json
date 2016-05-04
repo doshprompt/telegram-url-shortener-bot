@@ -7,7 +7,6 @@
     "express": "^4.13.3",
     "log-symbols": "^1.0.2",
     "node-telegram-bot-api": "^0.15.0",
-    "request-promise": "^3.0.0",
     "validator": "^5.2.0"
   },
   "devDependencies": {},

@@ -3,7 +3,7 @@
 const Bot = require('node-telegram-bot-api');
 
 const validator = require('validator');
-const request = require('request-promise');
+const TinyURL = require('tinyurl');
 const symbols = require('log-symbols');
 
 const bot = new Bot(process.env.TOKEN, {
@@ -17,7 +17,7 @@ bot.onText(/^\/start$/, (msg) => {
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     let url = match[1];
     if (validator.isURL(url)) {
-        request.get('http://tinyurl.com/api-create.php?url=' + url).then((r) => {
+        TinyURL.shorten(url, (r) => {
             bot.sendMessage(msg.chat.id, r);
             console.log(symbols.success, url, '-->', r);
         });

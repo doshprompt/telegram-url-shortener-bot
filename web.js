@@ -2,7 +2,7 @@ var express = require('express'),
 
 	pkg = require('./package.json'),
 
-	app = express(), d
+	app = express(),
 	server;
 
 app.get('/', function (req, res) {

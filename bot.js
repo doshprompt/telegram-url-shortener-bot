@@ -14,7 +14,7 @@ const bot = new Bot(process.env.TOKEN, {
 const prefixProtocol = url => !/^(?:f|ht)tps?\:\/\//.test(url) ? ('http://' + url) : url;
 
 bot.onText(/^\/start$/, msg => {
-    bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll shorten it!');
+    bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll /shorten or /expand it for you!');
 });
 
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
@@ -37,12 +37,14 @@ bot.onText(/^\/expand (.+)$/, (msg, match) => {
     unshort(shortUrl, (err, url) => {
         if (err) {
             console.log(symbols.error, err);
+            bot.sendMessage(msg.from.id, 'Sorry, that URL could not be expanded :(');
         } else {
             if (url) {
                 bot.sendMessage(msg.from.id, url);
                 console.log(symbols.success, shortUrl, '-->', url);
             } else {
                 console.log(symbols.error, shortUrl);
+                bot.sendMessage(msg.from.id, 'Sorry, that URL could not be expanded :(');
             }
         }
     });

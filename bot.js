@@ -24,4 +24,4 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     }
 });
 
-console.log(symbols.info, 'bot server started...');
+console.log('%sbot server started...', symbols.info);

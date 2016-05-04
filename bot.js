@@ -16,7 +16,9 @@ bot.onText(/^\/start$/, (msg) => {
 
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     let url = match[1];
-    if (validator.isURL(url)) {
+    if (validator.isURL(url, {
+        require_protocol: true
+    })) {
         TinyURL.shorten(url, (r) => {
             bot.sendMessage(msg.chat.id, r);
             console.log(symbols.success, url, '-->', r);

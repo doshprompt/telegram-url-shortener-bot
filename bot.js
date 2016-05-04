@@ -16,12 +16,12 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     if (validator.isURL(url)) {
         request.get('http://tinyurl.com/api-create.php?url=' + url).then((r) => {
             bot.sendMessage(msg.chat.id, r);
-            console.log(symbols.success, '%s -> %s', url, r);
+            console.log(chalk.green('%s %s -> %s', symbols.success, url, r));
         });
     } else {
         bot.sendMessage(msg.chat.id, 'Sorry, that\'s not a vaid URL :(');
-        console.log(symbols.error, url);
+        console.log(chalk.red(symbols.error, url));
     }
 });
 
-console.log('%sbot server started...', symbols.info);
+console.log(chalk.blue('%s bot server started...', symbols.info));

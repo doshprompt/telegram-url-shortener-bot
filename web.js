@@ -1,11 +1,11 @@
-var express = require('express'),
-	symbols = require('log-symbols'),
-	chalk = require('chalk'),
+'use strict';
 
-	pkg = require('./package.json'),
+const express = require('express');
+const symbols = require('log-symbols');
 
-	app = express(),
-	server;
+const pkg = require('./package.json');
+
+const app = express();
 
 app.get('/', (req, res) => {
 	res.json({
@@ -13,6 +13,6 @@ app.get('/', (req, res) => {
 	});
 });
 
-server = app.listen(process.env.PORT, () => {
-	console.log(chalk.blue(symbols.info, 'web server started on', server.address().port));
+let server = app.listen(process.env.PORT, () => {
+	console.log(symbols.info, 'web server started on', server.address().port);
 });

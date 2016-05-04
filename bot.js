@@ -10,7 +10,7 @@ const bot = new Bot(process.env.TOKEN, {
     polling: true
 });
 
-const prefixProtocol = url => !/^(?:f|ht)tps?\:\/\//.test(url) ? 'http://' + url : url;
+const prefixProtocol = url => !/^(?:f|ht)tps?\:\/\//.test(url) ? ('http://' + url) : url;
 
 bot.onText(/^\/start$/, msg => {
     bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll shorten it!');

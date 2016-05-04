@@ -15,5 +15,5 @@ app.get('/', (req, res) => {
 server = app.listen(process.env.PORT, () => {
   var address = server.address();
 
-  console.log(symbols.info, 'web server started at http://%s:%s', address.address, address.port);
+  console.log('%s web server started at http://%s:%s', symbols.info, address.address, address.port);
 });

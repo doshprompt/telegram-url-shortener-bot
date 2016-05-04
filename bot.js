@@ -4,7 +4,7 @@ const Bot = require('node-telegram-bot-api-upgrades');
 
 const validator = require('validator');
 const TinyURL = require('tinyurl');
-const unshort = require('url-unshort');
+const unshort = require('unshort');
 const symbols = require('log-symbols');
 
 const bot = new Bot(process.env.TOKEN, {
@@ -31,12 +31,12 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     }
 });
 
-bot.onText(/^\/shorten (.+)$/, (msg, match) => {
+bot.onText(/^\/expand (.+)$/, (msg, match) => {
     let shortUrl = match[1];
 
-    unshort.expand(shortUrl, (err, url) => {
+    unshort(shortUrl, (err, url) => {
         if (err) {
-            console.log(symbols.error, err); 
+            console.log(symbols.error, err);
         } else {
             if (url) {
                 bot.sendMessage(msg.from.id, url);

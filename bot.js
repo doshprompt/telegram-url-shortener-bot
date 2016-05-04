@@ -9,7 +9,6 @@ bot.onText(/^\/start$/, (msg) => {
     bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll shorten it!');
 });
 
-// hello command
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     var url = match[1];
     if (validator.isURL(url)) {
@@ -17,7 +16,7 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
             bot.sendMessage(msg.chat.id, r);
         });
     } else {
-        $.sendMessage(msg.chat.id, 'Sorry, that\'s not a vaid URL :(');
+        bot.sendMessage(msg.chat.id, 'Sorry, that\'s not a vaid URL :(');
     }
 });
 

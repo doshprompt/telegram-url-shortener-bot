@@ -1,7 +1,8 @@
 var express = require('express'),
-	pkg = require('./package.json'),
-	app = express(),
 
+	pkg = require('./package.json'),
+
+	app = express(), d
 	server;
 
 app.get('/', function (req, res) {
@@ -13,5 +14,5 @@ app.get('/', function (req, res) {
 server = app.listen(process.env.PORT, function () {
   var address = server.address();
 
-  console.log('Web server started at http://%s:%s', address.address, address.port);
+  console.log('web server started at http://%s:%s', address.address, address.port);
 });

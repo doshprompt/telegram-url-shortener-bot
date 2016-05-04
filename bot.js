@@ -1,6 +1,6 @@
 'use strict';
 
-const Bot = require('node-telegram-bot-api');
+const Bot = require('node-telegram-bot-api-upgrades');
 
 const validator = require('validator');
 const TinyURL = require('tinyurl');
@@ -20,7 +20,7 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     let url = match[1];
     if (validator.isURL(url)) {
         TinyURL.shorten(prefixProtocol(url), r => {
-            bot.sendMessage(msg.chat.id, r);
+            bot.sendMessage(msg.from.id, r);
             console.log(symbols.success, url, '-->', r);
         });
     } else {

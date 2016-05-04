@@ -10,16 +10,16 @@ const bot = new Bot(process.env.TOKEN, {
     polling: true
 });
 
-bot.onText(/^\/start$/, (msg) => {
+const prefixProtocol = url => !/^(?:f|ht)tps?\:\/\//.test(url) ? 'http://' + url : url;
+
+bot.onText(/^\/start$/, msg => {
     bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll shorten it!');
 });
 
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     let url = match[1];
-    if (validator.isURL(url, {
-        require_protocol: true
-    })) {
-        TinyURL.shorten(url, (r) => {
+    if (validator.isURL(url)) {
+        TinyURL.shorten(prefixProtocol(url), r => {
             bot.sendMessage(msg.chat.id, r);
             console.log(symbols.success, url, '-->', r);
         });

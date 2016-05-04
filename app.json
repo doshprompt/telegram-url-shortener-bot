@@ -1,0 +1,8 @@
+{
+  "name": "Telegram URL Shortener Bot",
+  "description": "Telegram Bot",
+  "repository": "https://github.com/doshprompt/telegram-url-shortener-bot",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "telegram", "bot", "tinyurl", "shortener"],
+  "image": "heroku/nodejs"
+}

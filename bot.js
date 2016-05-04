@@ -17,15 +17,7 @@ bot.onText(/^\/start$/, (msg) => {
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     let url = match[1];
     if (validator.isURL(url)) {
-        request('http://tiny-url.info/api/v1/create', {
-            method: 'GET',
-            qs: {
-                provider: 'tiny_url',
-                apikey: process.env.APIKEY,
-                format: 'text',
-                url: url
-            }
-        }).then((r) => {
+        request.get('http://tinyurl.com/api-create.php?url=' + url).then((r) => {
             bot.sendMessage(msg.chat.id, r);
             console.log(symbols.success, url, '-->', r);
         });

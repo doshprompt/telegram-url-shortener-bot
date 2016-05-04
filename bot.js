@@ -14,7 +14,7 @@ const bot = new Bot(process.env.TOKEN, {
 const prefixProtocol = url => !/^(?:f|ht)tps?\:\/\//.test(url) ? ('http://' + url) : url;
 
 bot.onText(/^\/start$/, msg => {
-    bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll /shorten or /expand it for you!');
+    bot.sendMessage(msg.chat.id, 'Just send me a url and I\'ll "shorten" or "expand" it for you!');
 });
 
 bot.onText(/^\/shorten (.+)$/, (msg, match) => {

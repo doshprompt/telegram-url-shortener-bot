@@ -5,13 +5,13 @@ var express = require('express'),
 	app = express(),
 	server;
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.json({
   	version: pkg.version
   });
 });
 
-server = app.listen(process.env.PORT, function () {
+server = app.listen(process.env.PORT, () => {
   var address = server.address();
 
   console.log('web server started at http://%s:%s', address.address, address.port);

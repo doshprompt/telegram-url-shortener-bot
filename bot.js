@@ -14,9 +14,11 @@ bot.onText(/^\/shorten (.+)$/, (msg, match) => {
     if (validator.isURL(url)) {
         request.get('http://tinyurl.com/api-create.php?url=' + url).then((r) => {
             bot.sendMessage(msg.chat.id, r);
+            console.log('%s -> %s', url, r);
         });
     } else {
         bot.sendMessage(msg.chat.id, 'Sorry, that\'s not a vaid URL :(');
+        console.log(url);
     }
 });
 

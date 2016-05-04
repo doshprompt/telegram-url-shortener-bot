@@ -1,5 +1,6 @@
 var express = require('express'),
 	symbols = require('log-symbols'),
+	chalk = require('chalk'),
 
 	pkg = require('./package.json'),
 
@@ -7,13 +8,11 @@ var express = require('express'),
 	server;
 
 app.get('/', (req, res) => {
-  res.json({
-  	version: pkg.version
-  });
+	res.json({
+		version: pkg.version
+	});
 });
 
 server = app.listen(process.env.PORT, () => {
-  var address = server.address();
-
-  console.log(chalk.blue('%s web server started at http://%s:%s', symbols.info, address.address, address.port));
+	console.log(chalk.blue(symbols.info, 'web server started on', server.address().port));
 });
